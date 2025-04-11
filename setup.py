@@ -13,7 +13,7 @@ setup(
         ],
     },
     author="Mark Santos",
-    author_email="mark.santos.1147@gmail.com",
+    author_email="henryzheng4111@gmail.com",
     description="A command line file backup tool",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
