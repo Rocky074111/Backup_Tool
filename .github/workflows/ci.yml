@@ -2,9 +2,9 @@ name: Backup Tool CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
@@ -12,27 +12,27 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: [3.7, 3.8, 3.9, '3.10']
+        python-version: [3.7, 3.8, 3.9, "3.10"]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest coverage
-        pip install -e .
-    - name: Lint with flake8
-      run: |
-        flake8 backuptool tests
-    - name: Test with coverage
-      run: |
-        python run_tests.py --html
-    - name: Upload coverage report
-      uses: actions/upload-artifact@v3.1.2
-      with:
-        name: coverage-report-${{ matrix.os }}-${{ matrix.python-version }}
-        path: htmlcov/
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest coverage
+          pip install -e .
+      - name: Lint with flake8
+        run: |
+          flake8 backuptool tests
+      - name: Test with coverage
+        run: |
+          python run_tests.py --html
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report-${{ matrix.os }}-${{ matrix.python-version }}
+          path: htmlcov/
