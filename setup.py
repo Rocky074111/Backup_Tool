@@ -12,7 +12,7 @@ setup(
             "backuptool=backuptool.cli:main",
         ],
     },
-    author="Mark Santos",
+    author="Rocky074111",
     author_email="henryzheng4111@gmail.com",
     description="A command line file backup tool",
     long_description=open("README.md").read(),
